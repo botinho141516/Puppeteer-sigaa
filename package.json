@@ -1,0 +1,30 @@
+{
+  "name": "sigaa-check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "bin.js",
+  "dependencies": {
+    "console-read-write": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "puppeteer": "^5.3.0"
+  },
+  "pkg": {
+    "scripts": "node_modules/puppeteer/lib/*.js",
+    "assets": [
+      "views/**/*"
+    ],
+    "targets": [
+      "node12-win-x64"
+    ]
+  },
+  "scripts": {
+    "start": "node bin.js",
+    "build": "rm -rf build && pkg . --out-path build -t node12-win-x64",
+    "postbuild": "cp -R ./node_modules/puppeteer/.local-chromium/win64-800071/chrome-win build/chromium",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "pkg . -t node12-linux-x64"
+  },
+  "author": "Xolas",
+  "license": "ISC"
+}
